@@ -1,0 +1,23 @@
+{
+  "by default": "New site with using backbone, bootstrap and closures.",
+  "Black_mamba": {
+    "preview": {
+      "image": "<img src=\"imgs/mamba/smiling\">",
+      "text": "This babe was a real shit, but there is something very interesting in her. She is not like many people in the world. She has something what many other ones doesn't have. "
+    },
+    "impression": [
+        ["This babe is real sociopathic crap! She was a killer, a possesser of one of the crappies professies of the whole world! So, she hurted people quite! I think she deserved what happened to her once upon a time!", "<img src=\"imgs/mamba/deserved.png\">"," She killed her enemies who had hurted her, but 2 of them were parents of little kids and, maybe, they were fond parents for them. One of these 2 people was a parent of her own child, and other one, other babe was a mummy of one other girl. This girl saw her mummy's death and she was shocked. It was a psychic injury for her."],
+        ["This babe is someone fantastic!", "The first what to say is her story about revenge to her enemies. She had to pass a serie of serious extreme adventures in fighting with them. She has coped with all of them very successfully, won in all of the mortal fights, survived and annihilated almost everyone whom she wanted to annihilate except one man who was killed, but not by her forces.", "One of the great advenures is imaged on the picture below: ", "<img src=\"imgs/mamba/great_picture.png\"", "One babe fights with her sword with a huge army having swords!", "This babe has a terrific smile! Most of all I like this one:"]
+    ]
+  },
+  "Supergirl": {
+    "preview": {
+      "image": "<img src=\"imgs/supergirl/fear.png\">",
+      "text": "This girl was from other planet. Her native planet had died! But the girl emigrated to Earth and became a great hero here."
+    },
+    "impression": [
+        ["It is very tragic and sad that her native planet had been distructed and many of her relatives died in this catastrophe! But she emigrated to Earth and the sun of this planet make a real superhero of her. She does many good deals for people and it is her pleasure."],
+        ["This girl is a great superhero! There are not such heroes as her in our real world! I like how she flies and helps people! She can fly, release fires from her eyes, cold air from her breathing and usual bullets of criminals can't hurt her!", "There she looks very pretty:", "<img src=\"imgs/supergirl/pretty_supergirl.png\">", "But here she looks not so pretty:", "<img src=\"imgs/supergirl/ugly_supergirl.png\">", "<img src=\"imgs/supergirl/ugly_supergirl2.png\">"]
+    ]
+  }
+}

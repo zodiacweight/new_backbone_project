@@ -1,0 +1,43 @@
+    /*
+    .row > div {
+        border: 1px solid;
+    }
+    */
+    #dummybodyid {
+        margin-top: 1%;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+    }
+    #logo {
+        font-size: 24px;
+        font-family: "Calibri Light";
+        color: deeppink;
+        padding: 0.5%;
+        box-sizing: border-box;
+    }
+    #top_menu {
+        background-color: lightsteelblue;
+        padding: 9px;
+        box-sizing: border-box;
+    }
+    #top_menu > a {
+        margin-right: 4%;
+    }
+    #content {
+       /* border: 2px solid; */
+        /*margin-left: 5%; */
+    }
+    #left_menu {
+        background-color: #00FFFF;
+        padding-top: 2%;
+        padding-bottom: 3%;
+        padding-left: 3%;
+        box-sizing: border-box;
+    }
+    a {
+        font-size: 22px;
+    }
+    #left_menu > a {
+        display: block;
+        margin-bottom: 5%;
+    }
