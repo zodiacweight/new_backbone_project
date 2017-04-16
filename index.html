@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style_tables/basement.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap-grid-only/bootstrap.css"/>
+    <script src="node_modules/underscore/underscore-min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/backbone/backbone-min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1 col-md-2" id="logo">logo</div>
+            <div class="col-sm-11 col-md-10" id="top_menu">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+            </div>
+        </div>
+        <div class="row">
+           <!-- <div class="col-md-12" id="div"></div> -->
+           <div id="left_menu" class="col-sm-3 col-md-2">
+                <a href="#Supergirl/view1">Супергероиня</a>
+                <a href="#Toad/view1">Гадина</a>
+           </div>
+           <div id="content" class="col-sm-9 col-md-10">
+                Здесь содержимое контента
+           </div>
+        </div>
+    </div>
+    <script src="scripts/functions.js" type="text/javascript"></script>
+    <script src="scripts/appRouter.js" type="text/javascript"></script>
+</body>
+</html>
