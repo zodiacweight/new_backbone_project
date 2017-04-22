@@ -1,7 +1,6 @@
 /**
  * Created by User on 14.04.2017.
  */
-
 function getData(title) {
         var promise = new Promise(function(resolve, reject){
         var path = "data.json";
@@ -18,14 +17,10 @@ function getData(title) {
             } else {
                 var cnt=0, int = setInterval(function(){
                     var data = JSON.parse(xhr.responseText);
-                    //window.data = {};
-                    // window.data[title] = data[title]; // определены оба объекта 'Black_parody', 'Xmarine'
-                    //console.log('window[key]=>', window[key]);
-                    // save pages
                     cnt++;
                     if(data[title]){
                         resolve(data[title]);
-                        console.log("данные в теле функции: ", data);
+                        //console.log("данные в теле функции: ", data);
                         clearInterval(int);
                     }
                     else {
@@ -45,27 +40,74 @@ function getData(title) {
     return promise; // функция должна возвращать promise.
 }
 
+function getTemplate(fileWay) {
+   var promise = new Promise(function(resolve, reject){
+        //var defer = $.Deferred();
+        /*$.get(fileWay, function (template_file) { // все содержимое файла по данному запросу в одну строку
+        // преобразует строку в html-элемент
+        var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
+            tmplContents = $(tmplHTML).html();
+            //defer.resolve(tmplContents);
+        }); */
+        var tmplHTML = $.parseHTML(fileWay), // все содержимое тегов script в файле
+            tmplContents = $(tmplHTML).html();
+            console.log("fileWay: ", {fileWay:fileWay, tmplHTML:tmplHTML, tmplContents:tmplContents});
+		var cnt=0, int = setInterval(function(){
+		    cnt++;
+            console.log("tmplHTML: ", tmplHTML, "tmplContents: ", tmplContents);
+            // распарсить содержимое шаблона и вписать в переменную.
+    		if((tmplHTML)&&(tmplContents)){
+    		    resolve(result);
+    		    clearInterval(int);
+    		}
+    	    else {
+    	        if(cnt > 15){
+    	             reject('not it');
+    	             clearInterval(int);
+    	        }
+    	       
+    	    }
+		}, 100) 
+	});
+	return promise;
+	//return defer.promise;
+}
 
 var getAccessToData = (function () {
     var data = {};
     return {
-        retreiveValue: function (title) {
-            return data[title];
+        retreiveValue: function (key) {
+            return data[key];
         },
         addData: function (title) {
             getData(title).then(
                 function(result){
-                    console.log("data вне функции = ", result);
+                    //console.log("data вне функции = ", result);
                 },
                 function (message){
-                    console.log(message);
                 }
             );
+        },
+        addTemplate: function (temp) {
+            getTemplate("templates/"+temp+".html").then(
+                function(result){
+                     //console.log("шаблон: ", result);
+                },
+                function (message){
+                    //console.log(message);
+                }  /**/
+            );
+              
+               
+            
         }
     }
 }());
 
-/*
- *
- *
- * */
+
+/*Схема того, что получается при загрузке view:
+* Обращение к data, извлечение данных по title. Если их там нет, добавляем.
+* Обращение к data, извлечение шаблона по view. Если его там нет, добавляем.
+* Из данных и шаблона, извлекаемых из data, делаем view и вставляем его в область
+* контента.
+* */
