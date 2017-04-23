@@ -35,15 +35,23 @@ var AppRouter = Backbone.Router.extend({
     },
     loadView: function(title, view) {
             var temp = "temp"+view[view.length-1];
-            if (!(getAccessToData.retreiveValue(title))) {
+            // if returns false or null or ''
+            if (!getAccessToData.retreiveValue(title)) {
                 getAccessToData.addData(title); 
                 // Вызов метода, который возвращает json-данные в виде promise.
                 // tryingToGetData=getAccessToData.retreiveValue(title);
                 //
             }
-            if(!(getAccessToData.retreiveValue(temp))){
-                getAccessToData.addTemplate(temp);
+            if(!getAccessToData.retreiveValue(temp)){
+                getAccessToData.addTemplate(temp, function(result, data){
+                    data[temp] = result;
+                    console.log('%cCheck addData =>', 'background: lime', {
+                        result:result, data:data, temp:temp
+                    });
+                });
             }
+            console.log("data: ", getAccessToData.retreiveValue(title), "templ:", 
+            getAccessToData.retreiveValue(temp));
         }
         /* Взять данные и шаблон из getAccessToData;
         * Сделать из них готовый view и вставить в область контента;

@@ -75,32 +75,37 @@ function getTemplate(fileWay) {
 }
 
 var getAccessToData = (function () {
-    var data = {};
+    var data; //= {};
     return {
         retreiveValue: function (key) {
-            return data[key];
+            return ! data ? false : data[key];
         },
         addData: function (title) {
+            //
             getData(title).then(
                 function (result) {
+                    if (!data) data = {};
                     //console.log("data вне функции = ", result);
+                    data[title]=result;
                 },
                 function (message) {
                 }
             );
         },
-        addTemplate: function (temp) {
+        addTemplate: function (temp, callback) {
+            //data[temp]="string";
             getTemplate("templates/" + temp + ".html").then(
                 function (result) {
-                    //console.log("шаблон: ", result);
+                    if (!data) data = {};
+                    console.log("шаблон: ", result);
+                    callback(result, data);
+                    // data[temp] = result;
+                    // console.log("data[temp]: ", data[temp]);
                 },
                 function (message) {
-                    //console.log(message);
-                }  /**/
-            );
-
-
-
+                    console.log(message);
+                }  
+            ); /**/
         }
     }
 } ());
