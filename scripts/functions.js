@@ -1,6 +1,6 @@
 /**
  * Created by User on 14.04.2017.
- */
+
 function getData(title) {
     var promise = new Promise(function (resolve, reject) {
         var path = "data.json";
@@ -39,8 +39,8 @@ function getData(title) {
     });
     return promise; // функция должна возвращать promise.
 }
-
-function getTemplate(fileWay) {
+  */
+function getFile(fileWay) {
     var defer = $.Deferred();
     $.get(fileWay, function (template_file) { // все содержимое файла по данному запросу в одну строку
         // преобразует строку в html-элемент
@@ -50,28 +50,6 @@ function getTemplate(fileWay) {
         defer.resolve(tmplContents);
     });
     return defer.promise();
-    /*var promise = new Promise(function(resolve, reject){
-        var tmplHTML = $.parseHTML(fileWay), // все содержимое тегов script в файле
-            tmplContents = $(tmplHTML).html();
-            console.log("fileWay: ", {fileWay:fileWay, tmplHTML:tmplHTML, tmplContents:tmplContents});
-		var cnt=0, int = setInterval(function(){
-		    cnt++;
-            console.log("tmplHTML: ", tmplHTML, "tmplContents: ", tmplContents);
-            // распарсить содержимое шаблона и вписать в переменную.
-    		if((tmplHTML)&&(tmplContents)){
-    		    resolve(result);
-    		    clearInterval(int);
-    		}
-    	    else {
-    	        if(cnt > 15){
-    	             reject('not it');
-    	             clearInterval(int);
-    	        }
-    	       
-    	    }
-		}, 100) 
-	});
-	return promise;*/
 }
 
 var getAccessToData = (function () {
@@ -80,9 +58,9 @@ var getAccessToData = (function () {
         retreiveValue: function (key) {
             return ! data ? false : data[key];
         },
-        addData: function (title) {
+       addData: function (title) {
             //
-            getData(title).then(
+            getFile(title).then(
                 function (result) {
                     if (!data) data = {};
                     //console.log("data вне функции = ", result);
@@ -91,10 +69,11 @@ var getAccessToData = (function () {
                 function (message) {
                 }
             );
-        },
-        addTemplate: function (temp, callback) {
+        },  /**/
+        addField: function (fileWay, callback) {
             //data[temp]="string";
-            getTemplate("templates/" + temp + ".html").then(
+            console.log("fileWay", fileWay);
+            getFile(fileWay).then(
                 function (result) {
                     if (!data) data = {};
                     console.log("шаблон: ", result);

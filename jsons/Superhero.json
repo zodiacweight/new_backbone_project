@@ -1,0 +1,12 @@
+{
+  "Superhero": {
+    "preview": {
+      "image": "<img src=\"imgs/supergirl/fear.png\">",
+      "text": "This girl was from other planet. Her native planet had died! But the girl emigrated to Earth and became a great hero here."
+    },
+    "impression": [
+        ["It is very tragic and sad that her native planet had been distructed and many of her relatives died in this catastrophe! But she emigrated to Earth and the sun of this planet make a real superhero of her. She does many good deals for people and it is her pleasure."],
+        ["This girl is a great superhero! There are not such heroes as her in our real world! I like how she flies and helps people! She can fly, release fires from her eyes, cold air from her breathing and usual bullets of criminals can't hurt her!", "There she looks very pretty:", "<img src=\"imgs/supergirl/pretty_supergirl.png\">", "But here she looks not so pretty:", "<img src=\"imgs/supergirl/ugly_supergirl.png\">", "<img src=\"imgs/supergirl/ugly_supergirl2.png\">"]
+    ]
+  }
+}

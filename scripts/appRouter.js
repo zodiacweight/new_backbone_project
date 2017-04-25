@@ -34,19 +34,25 @@ var AppRouter = Backbone.Router.extend({
 
     },
     loadView: function(title, view) {
+            console.log("функция loadView вызвана!");
             var temp = "temp"+view[view.length-1];
             // if returns false or null or ''
             if (!getAccessToData.retreiveValue(title)) {
-                getAccessToData.addData(title); 
+                getAccessToData.addField("jsons/"+title+".json", function(result, data){
+                    data[title] = result;
+                    console.log('%cCheck addData =>', 'background: lime', {
+                        result:result, data:data
+                    });
+                }); 
                 // Вызов метода, который возвращает json-данные в виде promise.
                 // tryingToGetData=getAccessToData.retreiveValue(title);
                 //
             }
             if(!getAccessToData.retreiveValue(temp)){
-                getAccessToData.addTemplate(temp, function(result, data){
+                getAccessToData.addField("templates/"+temp+".html", function(result, data){
                     data[temp] = result;
                     console.log('%cCheck addData =>', 'background: lime', {
-                        result:result, data:data, temp:temp
+                        result:result, temp:temp
                     });
                 });
             }
