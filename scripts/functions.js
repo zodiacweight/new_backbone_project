@@ -46,19 +46,23 @@ function getFile(fileWay) {
         // преобразует строку в html-элемент
         var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
             tmplContents = $(tmplHTML).html();
-        console.log('Got data=>', {tmplHTML:tmplHTML, tmplContents:tmplContents});
+        //console.log('Got data=>', {tmplHTML:tmplHTML, tmplContents:tmplContents});
         defer.resolve(tmplContents);
     });
     return defer.promise();
 }
 
 var getAccessToData = (function () {
-    var data; //= {};
+    var data;
     return {
         retreiveValue: function (key) {
-            return ! data ? false : data[key];
+            if (!data) return false; 
+            else return key ? data[key] : data;
         },
-       addData: function (title) {
+        initData: function(){
+            if (!data) data = {};
+        },
+        addData: function (title) {
             //
             getFile(title).then(
                 function (result) {
@@ -72,11 +76,11 @@ var getAccessToData = (function () {
         },  /**/
         addField: function (fileWay, callback) {
             //data[temp]="string";
-            console.log("fileWay", fileWay);
+            //console.log("fileWay", fileWay);
             getFile(fileWay).then(
                 function (result) {
                     if (!data) data = {};
-                    console.log("шаблон: ", result);
+                    //console.log("шаблон: ", result);
                     callback(result, data);
                     // data[temp] = result;
                     // console.log("data[temp]: ", data[temp]);
@@ -85,6 +89,32 @@ var getAccessToData = (function () {
                     console.log(message);
                 }  
             ); /**/
+        },
+        makeView: function (title, tmpl){
+            if(data===undefined){
+                var count=0;
+                while(data!=={}){
+                    count++;
+                    if(count>1238000){
+                        break;
+                    }
+                }
+                console.log("data: ");
+            }
+            else {
+                
+            }
+            //console.log("data[title]: ", data[title], "data[templ]:", data[templ]);
+            /*if((data[title])&&(data[tmpl])){
+                var readyView = _.template(data[title], tmpl);
+                return readyView;
+            }
+            else {
+                var c=0;
+                while((data[title]===undefined)&&(data[tmpl]===undefined)){
+                    
+                }
+            } */
         }
     }
 } ());

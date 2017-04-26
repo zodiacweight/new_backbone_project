@@ -36,8 +36,9 @@ var AppRouter = Backbone.Router.extend({
     loadView: function(title, view) {
             console.log("функция loadView вызвана!");
             var temp = "temp"+view[view.length-1];
+            
             // if returns false or null or ''
-            if (!getAccessToData.retreiveValue(title)) {
+            /*if (!getAccessToData.retreiveValue(title)) {
                 getAccessToData.addField("jsons/"+title+".json", function(result, data){
                     data[title] = result;
                     console.log('%cCheck addData =>', 'background: lime', {
@@ -47,17 +48,41 @@ var AppRouter = Backbone.Router.extend({
                 // Вызов метода, который возвращает json-данные в виде promise.
                 // tryingToGetData=getAccessToData.retreiveValue(title);
                 //
-            }
-            if(!getAccessToData.retreiveValue(temp)){
+            }*/
+            /*if(!getAccessToData.retreiveValue(temp)){
                 getAccessToData.addField("templates/"+temp+".html", function(result, data){
                     data[temp] = result;
-                    console.log('%cCheck addData =>', 'background: lime', {
-                        result:result, temp:temp
-                    });
+                    // console.log('%cCheck addData =>', 'background: lime', { result:result, temp:temp }); 
                 });
+            }*/
+            var data;
+            if (!(data = getAccessToData.retreiveValue())){
+                // set data = {}
+                getAccessToData.initData();
             }
-            console.log("data: ", getAccessToData.retreiveValue(title), "templ:", 
-            getAccessToData.retreiveValue(temp));
+            $.when( $.get("jsons/"+title+".json"),
+                    $.get("templates/"+temp+".html")).done(function(dataTitle, dataTemp){
+                console.log('Got data=>', {dataTitle:dataTitle, dataTemp:dataTemp[0]});
+                var temp=$.parseHTML(dataTemp[0]);
+                console.log("new temp:", temp);
+            });
+            
+            /* someMethod().then(function(){
+                // do something
+            }); */
+            
+            // var c=0, int = setInterval(function(){
+            //     if((getAccessToData.retreiveValue(title))&&(getAccessToData.retreiveValue(temp))){
+            //         console.log("Данные есть.");
+            //         clearInterval(int);
+            //     }
+            //     if(c>50){
+            //         console.log("Задница!");
+            //         clearInterval(int);
+            //     }
+            //     c++;
+            // }, 100);
+            //getAccessToData.makeView(title, temp);
         }
         /* Взять данные и шаблон из getAccessToData;
         * Сделать из них готовый view и вставить в область контента;
